@@ -276,8 +276,106 @@ body {
 .videoContainer {
     width: 100%;
     height: 90vh;
-    background-color: grey;
+    padding: 0 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-sizing: border-box;
 }
+
+.videoButtons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.videoButtons button {
+    position: relative;
+    padding: 10px;
+    font-family: var(--ff-titles);
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+    border: 4px solid var(--clr-orange);
+    border-radius: 0.5rem;
+}
+
+.videoButtons button:hover {
+    background-color: var(--clr-orange);
+    color: var(--clr-black);
+    box-shadow: 0px 0px 30px 1px var(--clr-orange);
+    transition: .3s;
+}
+
+.mask-button {
+    position: relative;
+    /* necesario para ::before */
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    /* para que la máscara no se salga */
+    background: none;
+    border: 1px solid #ccc;
+    color: #fff;
+}
+
+.mask-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--clr-black, black);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%23e87013' fill-opacity='0.4'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.videoWrapper {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    /* para posicionar el botón play */
+}
+
+.videoWrapper video {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    background: black;
+}
+
+/* Botón play/pause centrado */
+.play-pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    z-index: 10;
+}
+
+.play-pause-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 
 /* scroll */
 .scrollSection {
@@ -660,7 +758,9 @@ body {
         margin-top: 6rem;
     }
 
-    .scrollItem:nth-of-type(1) h2::after, .scrollItem:nth-of-type(2) h2::after, .scrollItem:nth-of-type(3) h2::after{
+    .scrollItem:nth-of-type(1) h2::after,
+    .scrollItem:nth-of-type(2) h2::after,
+    .scrollItem:nth-of-type(3) h2::after {
         font-size: 0.8rem;
     }
 

@@ -111,7 +111,22 @@
         </div>
     </main>
 
-    <section class="videoContainer"></section>
+    <section class="videoContainer">
+        <div class="videoButtons">
+            <button class="mask-button" data-src="./img/videos/video-1.mp4">Webs</button>
+            <button class="mask-button" data-src="./img/videos/video-2.mp4">Tiendanube</button>
+            <button class="mask-button" data-src="./img/videos/video-1.mp4">Optimizaciones</button>
+            <button class="mask-button" data-src="./img/videos/video-2.mp4">SEO Local</button>
+            <button class="mask-button" data-src="./img/videos/video-1.mp4">EmailMarketing</button>
+            <button class="mask-button" data-src="./img/videos/video-2.mp4">Asesorias</button>
+        </div>
+        <div class="videoWrapper">
+            <video id="videoPlayer" controls>
+                <source src="./img/videos/video-1.mp4" type="video/mp4" />
+                Tu navegador no soporta video.
+            </video>
+        </div>
+    </section>
 
     <section class="scrollSection">
         <div class="scrollInner">
@@ -161,6 +176,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/nav.js"></script>
+    <script src="./js/video.js"></script>
 </body>
 
 </html>

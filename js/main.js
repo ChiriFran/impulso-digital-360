@@ -346,3 +346,91 @@ images.forEach((img) => {
     });
 });
 
+
+/* animaciones de video */
+gsap.registerPlugin(ScrollTrigger);
+
+const videoContainer = document.querySelector('.videoContainer');
+const videoButtonsContainer = videoContainer.querySelector('.videoButtons');
+const videoButtons = videoButtonsContainer.querySelectorAll('.mask-button');
+const videoWrapper = videoContainer.querySelector('.videoWrapper');
+
+// Inicialmente desplazamos los elementos fuera de pantalla
+gsap.set(videoButtons, { x: -400, opacity: 0 });
+gsap.set(videoWrapper, { x: 400, opacity: 0 });
+
+ScrollTrigger.create({
+  trigger: videoContainer,
+  start: "top 70%",
+  end: "bottom 50%",
+  onEnter: () => {
+    gsap.to(videoButtons, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "ease.inOut",
+      stagger: 0.1 // ← Delay entre botones
+    });
+
+    gsap.to(videoWrapper, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "ease.inOut"
+    });
+  },
+  onLeaveBack: () => {
+    gsap.to(videoButtons, {
+      x: -500,
+      opacity: 0,
+      duration: 1,
+      ease: "ease.inOut",
+      stagger: {
+        each: 0.05,
+        from: "end" // ← Para que salgan en orden inverso
+      }
+    });
+
+    gsap.to(videoWrapper, {
+      x: 500,
+      opacity: 0,
+      duration: 1,
+      ease: "ease.inOut"
+    });
+  },
+  onLeave: () => {
+    gsap.to(videoButtons, {
+      x: -500,
+      opacity: 0,
+      duration: 1,
+      ease: "ease.inOut",
+      stagger: {
+        each: 0.05,
+        from: "end"
+      }
+    });
+
+    gsap.to(videoWrapper, {
+      x: 500,
+      opacity: 0,
+      duration: 1,
+      ease: "ease.inOut"
+    });
+  },
+  onEnterBack: () => {
+    gsap.to(videoButtons, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "ease.inOut",
+      stagger: 0.1
+    });
+
+    gsap.to(videoWrapper, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "ease.inOut"
+    });
+  }
+});
